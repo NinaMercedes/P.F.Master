@@ -52,6 +52,9 @@ conda deactivate
 ```
 
 ## Merging VCFs
-We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code beloe
+We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code below:
 ```
+conda activate fastq2matrix
+cd ~Pf_09_24/Pf_09_24_v2/analysis_09_24_v2
+merge_vcfs.py --sample-file samples.txt --prefix Pfalciparum_v2 --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --vcf-dir ~/Pf_09_24/Pf_09_24_v2/analysis_09_24_v2 --threads 10 
 ```
