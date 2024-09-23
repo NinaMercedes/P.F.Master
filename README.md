@@ -38,11 +38,14 @@ conda install bioconda::mosdepth
 conda install conda-forge::r-base
 # Open R and install data.table, dplyr, ggplot2, readr
 ```
-Now it is time to assess coverage using 500bp windows...
+Now it is time to assess coverage using 500bp windows... You can use 1000 windows instead, you will just need to alter '500' in the parse results script to reflect this change. Also you can change the coverage threshold/ percentage. 
 ```
 # Run Mosdepth, example in Zambia directory
 cd ~/Projects/July_24_Pf/Zambia
 cat samples.txt| xargs -I {} -P 10 sh -c "mosdepth -n --fast-mode --by 500 {} {}.cram"
-
+# Change sample file paths etc and run for a few samples, with chr graphs
+Rscript code/coverage/parse_mosdepth.R
+# or the following for batch/ large-scale analysis
+Rscript code/coverage/parse_mosdepth_coverage.R
 ```
 
