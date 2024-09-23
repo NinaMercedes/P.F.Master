@@ -41,7 +41,7 @@ conda install conda-forge::r-base
 Now it is time to assess coverage...
 ```
 # Run Mosdepth, example in Zambia directory
-cd Zambia
+cd ~/Projects/July_24_Pf/Zambia
 cat samples.txt| xargs -I {} -P 10 sh -c "mosdepth -n --fast-mode --by 500 {} {}.cram"
 
 ```
