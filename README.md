@@ -51,7 +51,7 @@ Rscript code/coverage/parse_mosdepth_coverage.R
 conda deactivate
 ```
 
-## Merging VCFs
+## Merging VCFs :heavy_plus_sign:
 We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code below:
 ```
 conda activate fastq2matrix
