@@ -38,7 +38,7 @@ conda install bioconda::mosdepth
 conda install conda-forge::r-base
 # Open R and install data.table, dplyr, ggplot2, readr
 ```
-Now it is time to assess coverage...
+Now it is time to assess coverage using 500bp windows...
 ```
 # Run Mosdepth, example in Zambia directory
 cd ~/Projects/July_24_Pf/Zambia
