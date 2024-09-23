@@ -47,5 +47,11 @@ cat samples.txt| xargs -I {} -P 10 sh -c "mosdepth -n --fast-mode --by 500 {} {}
 Rscript code/coverage/parse_mosdepth.R
 # or the following for batch/ large-scale analysis
 Rscript code/coverage/parse_mosdepth_coverage.R
+# Once we have the samples we need, move them over to the big cram and vcf directories!
+conda deactivate
 ```
 
+## Merging VCFs
+We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code beloe
+```
+```
