@@ -30,7 +30,7 @@ cat samples.txt| xargs -I {} -P 10 sh -c "bash run_new_sample.sh {}"
 conda deactivate
 ```
 
-## Get-Multisample BAM from Pf7k
+## Get Multi-sample BAM from Pf7k
 Some samples have multiple runs that we have merged. To double check compare results to those mergeed in the Pf7k project. 
 ```
 cd ~/ Pf_09_24_v2
