@@ -30,6 +30,14 @@ cat samples.txt| xargs -I {} -P 10 sh -c "bash run_new_sample.sh {}"
 conda deactivate
 ```
 
+## Get-Multisample BAM from Pf7k
+Some samples have multiple runs that we have merged. To double check compare results to those mergeed in the Pf7k project. 
+```
+cd ~/ Pf_09_24_v2
+mkdir multi_sample
+cat multi_samples.txt| xargs -I {} -P 10 sh -c "wget https://pf7_release.cog.sanger.ac.uk/bam/{}.bam"
+```
+
 ## Coverage :five:
 Once we have the g.vcf.gz and cram files, we want to assess the genome coverage. For the dataset we will aim for 60% of genome coverage greater than 5. We will assess this using mosdepth and the following code. First install mosdepth- I reccomend installing in its own conda just to separate out the steps. Code based off previous analysis by **Emilia Manko**. 
 ```
@@ -52,6 +60,7 @@ Rscript code/coverage/parse_mosdepth_coverage.R
 # Once we have the samples we need, move them over to the big cram and vcf directories!
 conda deactivate
 ```
+
 
 ## Merging VCFs :heavy_plus_sign:
 We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code below:
