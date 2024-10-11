@@ -30,12 +30,13 @@ cat samples.txt| xargs -I {} -P 10 sh -c "bash run_new_sample.sh {}"
 conda deactivate
 ```
 
-## Get Multi-sample BAM from Pf7k
-Some samples have multiple runs that we have merged. To double check compare results to those mergeed in the Pf7k project. 
+## Get Multi-sample BAM from Pf7k and Indonesia
+Some samples have multiple runs that we have merged. To double check compare results to those mergeed in the Pf7k project. Also downloaded bams from Indonesia because no fastq are available.
 ```
 cd ~/ Pf_09_24_v2
 mkdir multi_sample
 cat multi_samples.txt| xargs -I {} -P 10 sh -c "wget https://pf7_release.cog.sanger.ac.uk/bam/{}.bam"
+cat Indonesia.txt| xargs -I {} -P 10 sh -c "wget https://pf7_release.cog.sanger.ac.uk/bam/{}.bam"
 ```
 
 ## Coverage :five:
