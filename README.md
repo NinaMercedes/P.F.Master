@@ -30,7 +30,7 @@ cat samples.txt| xargs -I {} -P 10 sh -c "bash run_new_sample.sh {}"
 conda deactivate
 ```
 
-## Get Multi-sample BAM from Pf7k and Indonesia
+## Get Multi-sample BAM from Pf7k and Indonesia 📁
 Some samples have multiple runs that we have merged. To double check compare results to those mergeed in the Pf7k project. Also downloaded bams from Indonesia because no fastq are available. Ran fastq2 matrix on these with --bam optio.
 ```
 cd ~/ Pf_09_24_v2
