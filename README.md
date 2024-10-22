@@ -69,9 +69,12 @@ conda deactivate
 
 
 ## Merging VCFs :heavy_plus_sign:
-We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code below:
+We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code below- the first part is using our dummy dataset to check everything works. We don't want to start merging only to realise we don't have all the correct packages installed: check you have GATK, samtools, bedtools, bcftools, plink and R. Make sure to run in screen!
 ```
 conda activate fastq2matrix
+cd cd ~Pf_09_24/dummy
+merge_vcfs.py --sample-file wgs_id.txt --prefix dummy_data --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --vcf-dir ~/Pf_09_24/Pf_09_24_v2/analysis_09_24_v2 --threads 10 
+
 cd ~Pf_09_24/Pf_09_24_v2/analysis_09_24_v2
 merge_vcfs.py --sample-file samples.txt --prefix Pfalciparum_v2 --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --vcf-dir ~/Pf_09_24/Pf_09_24_v2/analysis_09_24_v2 --threads 10 
 ```
