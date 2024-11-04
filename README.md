@@ -72,10 +72,19 @@ conda deactivate
 We can perform joint variant calling when merging our vcfs to optimise our variant calls. Code below- the first part is using our dummy dataset to check everything works. We don't want to start merging only to realise we don't have all the correct packages installed: check you have GATK, samtools, bedtools, bcftools, plink and R. Make sure to run in screen and linux encoded txt file!
 ```
 conda activate fastq2matrix
-# to test
+# to test using smaller dataset in 'dummy' directory
 cd ~Pf_09_24/dummy
-merge_vcfs.py --sample-file wgs_id.txt --prefix dummy_data --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --vcf-dir ~/Pf_09_24/Pf_09_24_v2/analysis_09_24_v2 --threads 10 
-# for real
-cd ~Pf_09_24/Pf_09_24_v2/analysis_09_24_v2
-merge_vcfs.py --sample-file samples.txt --prefix Pfalciparum_v2 --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --vcf-dir ~/Pf_09_24/Pf_09_24_v2/analysis_09_24_v2 --threads 10 
+"/mnt/storage13/nbillows/fastq2matrix/scripts/merge_vcfs.py" all --sample-file wgs_id.txt --prefix dummy_data --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --vcf-dir "/mnt/storage13/nbillows/Pf_09_24/Pfalciparum_09_24_v2/vcfs/" --threads 10
+conda deactivate
+
 ```
+
+## Filtering multi-sample VCF
+Once we have successfully merged the VCF (which can take an age for large datasets), we can now begin the filtering process. The parameters/ options used here are standard for our *P. falciparum* pipeline, but feel free to change as you wish. 
+```
+# Again using the dummy file as an example
+cd ~Pf_09_24/dummy
+conda activate fastq2matrix
+filter_merged_vcf.py --merged-file "/mnt/storage13/nbillows/Pf_09_24/dummy/dummy_data.2024_10_29.genotyped.vcf.gz" --prefix dummy_data.2024_10_29.filt --ref "/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta" --bqsr-vcf	/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/3d7_hb3.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/7g8_gb4.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/hb3_dd2.combined.final.vcf.gz	 --include-region /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Core_genome_Pf3D7_v3_ext.bed --vqslod 0 --missing-sample-cutoff 0.4 --cutoff-mix-GT 0.8 --gff-file /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.modified.new.gff3 --threads 8
+```
+
