@@ -88,3 +88,7 @@ conda activate fastq2matrix
 filter_merged_vcf.py --merged-file "/mnt/storage13/nbillows/Pf_09_24/dummy/dummy_data.2024_10_29.genotyped.vcf.gz" --prefix dummy_data.2024_10_29.filt --ref "/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta" --bqsr-vcf	/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/3d7_hb3.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/7g8_gb4.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/hb3_dd2.combined.final.vcf.gz	 --include-region /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Core_genome_Pf3D7_v3_ext.bed --vqslod 0 --missing-sample-cutoff 0.4 --cutoff-mix-GT 0.8 --gff-file /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.modified.new.gff3 --threads 8
 ```
 
+
+```
+python "/mnt/storage13/nbillows/Pf_09_24/dummy/DR_haplotypes.py" --vcf "/mnt/storage13/nbillows/Pf_09_24/dummy/dummy_data.2024_10_29.filt.GT.miss0.4.vqslod.filt.snps.vcf.gz" --prefix dummey_test --reference "/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta" --gff "/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.modified.new.gff3" --DR_bed "/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/DR.tab"
+```
