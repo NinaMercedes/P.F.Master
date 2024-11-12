@@ -59,6 +59,7 @@ Now it is time to assess coverage using 500bp windows... You can use 1000 window
 # Run Mosdepth, example in Zambia directory
 cd ~/Projects/July_24_Pf/Zambia
 cat samples.txt| xargs -I {} -P 10 sh -c "mosdepth -n --fast-mode --by 500 {} {}.bqsr.cram --fasta /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta"
+cat samples.txt| xargs -I {} -P 10 sh -c "mosdepth -n --fast-mode --by "/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Core_genome_Pf3D7_v3_ext.bed" {} {}.bqsr.cram --fasta /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta"
 # Change sample file paths etc and run for a few samples, with chr graphs
 Rscript code/coverage/parse_mosdepth.R
 # or the following for batch/ large-scale analysis
