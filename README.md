@@ -24,7 +24,12 @@ cd Pf_09_24_v2/f2m
 bash run_get_new_samples.sh
 # You can also run_new_sample.sh with a single accession to make this work for one individual sample.
 # For in-house files, the following code can be run in a dedicated directory (recommend using xargs for parallelisation)
-cat samples.txt| xargs -I {} -P 10 sh -c "fastq2vcf.py all -1 {}_1.fastq.gz -2 {}_2.fastq.gz --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --p {} --threads 10 --bqsr-vcf	/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/3d7_hb3.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/7g8_gb4.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/hb3_dd2.combined.final.vcf.gz	--cram --bam-qc"
+cat samples.txt| xargs -I {} -P 10 sh -c "fastq2vcf.py all -1 {}_1.fastq.gz -2 {}_2.fastq.gz --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --p {} --threads 10 --bqsr-vcf
+/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/3d7_hb3.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/7g8_gb4.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/hb3_dd2.combined.final.vcf.gz	--cram --bam-qc"
+# Note the combination of --cram and --bam-qc may not work, could run:
+cat samples.txt| xargs -I {} -P 10 sh -c "fastq2vcf.py all -1 {}_1.fastq.gz -2 {}_2.fastq.gz --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --p {} --threads 10 --bqsr-vcf
+/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/3d7_hb3.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/7g8_gb4.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/hb3_dd2.combined.final.vcf.gz	--bam-qc" #or just with --cram for larger datasets
+
 # If you are interested in a specific accession list you can also run thr following code, remember again to change the file paths
 cat samples.txt| xargs -I {} -P 10 sh -c "bash run_new_sample.sh {}"
 conda deactivate
