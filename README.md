@@ -27,10 +27,10 @@ bash run_get_new_samples.sh
 fastqc *.fastq.gz -o fastqc_results # check htmls in folder for warnings or failures in adapter content (can ignore GC content)
 cat samples.txt| xargs -I {} -P 10 sh -c "hostile clean --fastq1 {}_1.fastq.gz --fastq2 {}_2.fastq.gz --threads 8" #returns "Pf_BR34_1.clean_1.fastq.gz" as an example
 cat samples.txt| xargs -I {} -P 10 sh -c "fastp -i {}_1.clean_1.fastq.gz -I {}_2.clean_2.fastq.gz -o {}_1.trimmed.fastq.gz  -O {}_2.trimmed.fastq.gz"
-cat samples.txt| xargs -I {} -P 10 sh -c "python '/mnt/storage13/nbillows/Pf_09_24/Pfalciparum_09_24_v2/code/fastq2vcf.py' all -1 {}_1.trimmed.fastq.gz -2 {}_2.trimmed.fastq.gz --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --p {} --threads 10 --bqsr-vcf
+cat samples.txt| xargs -I {} -P 10 sh -c "python '/mnt/storage13/nbillows/Pf_09_24/Pfalciparum_09_24_v2/code/fastq2vcf.py' all -1 {}_1.trimmed.fastq.gz -2 {}_2.trimmed.fastq.gz --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --p {} --threads 10 --bqsr-vcf -m bwa-mem2
 /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/3d7_hb3.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/7g8_gb4.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/hb3_dd2.combined.final.vcf.gz	--cram " # no trim if trimming using fastp- won't run trimmomatic, add --trim to do this but this will not remove adaptors.
 # Note the combination of --cram and --bam-qc may not work, could run:
-cat samples.txt| xargs -I {} -P 10 sh -c "fastq2vcf.py all -1 {}_1.fastq.gz -2 {}_2.fastq.gz --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --p {} --threads 10 --bqsr-vcf
+cat samples.txt| xargs -I {} -P 10 sh -c "fastq2vcf.py all -1 {}_1.fastq.gz -2 {}_2.fastq.gz --ref /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/Pfalciparum.genome.fasta --p {} --threads 10 --bqsr-vcf -m bwa-mem2
 /mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/3d7_hb3.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/7g8_gb4.combined.final.vcf.gz,/mnt/storage13/nbillows/Pf_09_24/Pf3D7_v3/hb3_dd2.combined.final.vcf.gz	--bam-qc" #or just with --cram for larger datasets
 
 # If you are interested in a specific accession list you can also run the following code, remember again to change the file paths
